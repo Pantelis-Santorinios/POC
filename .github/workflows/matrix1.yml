@@ -1,0 +1,19 @@
+
+name: Matrix_failing_randomly
+
+
+on:
+  
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        job: [1, 2, 3]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: The random failing job
+        run: |
+          exit $((RANDOM % 2))

@@ -5,6 +5,7 @@ name: Matrix_failing_randomly
 on:
   
   workflow_dispatch:
+  push:
 
 jobs:
   test:

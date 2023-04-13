@@ -19,7 +19,7 @@ jobs:
   
   job1:
     needs: echojob
-    if: ${{ needs.echojob.result == 'skipped' || success() }}
+    if: ${{ needs.echojob.result == 'skipped' || needs.echojob.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
      - run: echo "job1 has run"

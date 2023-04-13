@@ -1,0 +1,37 @@
+name: Needs test
+
+on:
+
+  workflow_dispatch:
+        
+jobs:
+  failingjob:
+   runs-on: ubuntu-latest
+   steps:
+     - run: exit 1
+
+  echojob:
+   needs: failingjob
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "echojob has run"
+  
+  
+  job1:
+    needs: echojob
+    if: needs.echojob.result == 'skipped' || success() 
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "job1 has run"
+  job2:
+    needs: echojob
+    if: success() 
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "job2 has run"
+  jo3:
+    needs: echojob
+    if: needs.echojob.result == 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "job3 has run"

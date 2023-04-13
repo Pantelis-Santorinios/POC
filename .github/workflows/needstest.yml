@@ -8,7 +8,7 @@ jobs:
   failingjob:
    runs-on: ubuntu-latest
    steps:
-     - run: exit 1
+     - run: exit 0
 
   echojob:
    needs: failingjob

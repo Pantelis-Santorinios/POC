@@ -22,16 +22,22 @@ jobs:
     if: ${{  success() || needs.echojob.result == 'skipped' }}
     runs-on: ubuntu-latest
     steps:
-     - run: echo "job1 has run"
+     - run: |
+        sleep 30
+        echo "job1 has run"
   job2:
     needs: echojob
     if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
-     - run: echo "job2 has run"
+     - run: |
+        sleep 30
+        echo "job2 has run"
   job3:
     needs: echojob
     if: ${{ needs.echojob.result == 'skipped' }}
     runs-on: ubuntu-latest
     steps:
-     - run: echo "job3 has run"
+     - run: |
+        sleep 30
+        echo "job3 has run"

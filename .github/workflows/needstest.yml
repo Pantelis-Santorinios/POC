@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - run: |
-        sleep 30
+        sleep 120
         echo "job1 has run"
   job2:
     needs: echojob

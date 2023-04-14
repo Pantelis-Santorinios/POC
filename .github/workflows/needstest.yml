@@ -19,7 +19,7 @@ jobs:
   
   job1:
     needs: echojob
-    if: ${{  success() || needs.echojob.result == 'skipped' }}
+    if: ${{  success() || needs.echojob.result == 'skipped' && !canceled() }}
     runs-on: ubuntu-latest
     steps:
      - run: |

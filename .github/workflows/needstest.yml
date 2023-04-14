@@ -3,12 +3,18 @@ name: Needs test
 on:
 
   workflow_dispatch:
-        
+   inputs:
+    exitcode:
+        description: 'Type exit code'
+        required: true
+        default: '0'
+        type: string
+         
 jobs:
   failingjob:
    runs-on: ubuntu-latest
    steps:
-     - run: exit 1
+     - run: exit '${{ inputs.exitcode }}'
 
   echojob:
    needs: failingjob
